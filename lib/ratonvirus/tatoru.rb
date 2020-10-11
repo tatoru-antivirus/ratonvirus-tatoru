@@ -1,5 +1,6 @@
 require "ratonvirus"
 require "tatoru_client"
+
 require_relative "scanner/tatoru"
 
 module Ratonvirus
