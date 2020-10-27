@@ -3,7 +3,13 @@
 require "spec_helper"
 require "ratonvirus-tatoru"
 
-describe Ratonvirus::Scanner::Tatoru do
+RSpec.describe Ratonvirus::Scanner::Tatoru do
+
+  before do
+    allow(Tatoru::Client::Configuration).to receive(:region).and_return('eu')
+    allow(Tatoru::Client::Configuration).to receive(:api_token).and_return('31e37aa387cf0eb628d6e44cf457f4e2')
+  end
+
   describe "#virus?" do
     context "when path is nil" do
       let(:path) { nil }
@@ -16,11 +22,6 @@ describe Ratonvirus::Scanner::Tatoru do
 
     context "when path is something else" do
       let(:path) { Ratonvirus::Tatoru.root.join(*%w(spec files clean.pdf)) }
-
-      # before do
-      #   # Ratonvirus needs this
-      #   allow(path).to receive(:empty?).and_return(false)
-      # end
 
       context "with Tatoru::Scanner::File.infected? returning false" do
         it "does not add any errors" do

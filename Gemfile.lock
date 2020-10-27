@@ -1,5 +1,5 @@
 PATH
-  remote: ../tatoru_client
+  remote: ../tatoru_client-ruby
   specs:
     tatoru_client (0.0.1)
       httparty
